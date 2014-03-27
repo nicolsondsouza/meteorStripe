@@ -14,6 +14,8 @@ Template.login.events({
 			Accounts.createUser({"username":username,"password":password},function(err){
 				if(err)
 					console.log("login failure");
+				else
+					Meteor.Router.to('/index');
 			})
 		}
 	},
@@ -22,6 +24,7 @@ Template.login.events({
 		var password = $("input[name='password'").val();
 		Meteor.loginWithPassword(username, password,function(){
 			console.log("loggedin");
+			Meteor.Router.to('/index');
 		});
 	}
 });
