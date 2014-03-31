@@ -13,6 +13,7 @@ Template.index.rendered = function(){
     
 }
 
+<<<<<<< HEAD
 Template.index.events({
     "click #sendcard" : function(){
         var cardname = $("input[name='card_name'").val();
@@ -30,17 +31,23 @@ Template.index.events({
         })
     }
 });
-var timerflag = true;
+function Timer(){
+
+}
+
+function showCreditCardForm(){
+    $("#creditcardcontent").show();
+    $("#indexcontent").hide();
+=======
+var timerflag=true;
 function Timer(){
     if(timerflag){
         console.log("timerflag"+timerflag)
         timerflag=false;
-        $('#clock').countdown('2014/4/2', function(event) {
-            $(this).html(event.strftime('Trial period %H:%M:%S'));
+        $('#clock').countdown('2020/10/10', function(event) {
+            $(this).html(event.strftime('%D days %H:%M:%S'));
             
-        }).on('finish', function(){
-            $("#creditcardcontent").show();
-            $("#indexcontent").show();
         });
     } 
+>>>>>>> c0a5241de53b248f1eb4171608d8d1ba42b3cfa4
 }
