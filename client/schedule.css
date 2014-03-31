@@ -1,6 +1,10 @@
 /* CSS declarations go here */
 
-
+#tab3{
+  position: absolute;
+  z-index: 10;
+  display: none;
+}
 
 
 /*METRONICS*/

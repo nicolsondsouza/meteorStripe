@@ -1,7 +1,11 @@
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
-
+    	Meteor.methods({
+    		"sendcardinformation" : function(cardjson){
+    			console.log(cardjson);
+    		}
+    	});
     });
 }
 

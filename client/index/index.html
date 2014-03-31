@@ -1318,7 +1318,11 @@
 	</div>
 	<!-- END SIDEBAR -->
 	<!-- BEGIN CONTENT -->
-	<div class="page-content-wrapper">
+	<div id="creditcardcontent" class="page-content-wrapper">
+		{{> creditcard}}
+	</div>
+	<div id="indexcontent" class="page-content-wrapper">
+
 		<div class="page-content">
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -3704,4 +3708,93 @@
 <!-- END FOOTER -->
 
 
+</template>
+
+<template name="creditcard">
+<div id="creditcardform" class="tab-pane active" >
+	<h3 class="block">Provide your billing and credit card details</h3>
+	<div class="form-group">
+		<label class="control-label col-md-3">Card Holder Name
+		<span class="required">
+			 *
+		</span>
+		</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="card_name">
+			<span class="help-block">
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-3">Card Number
+		<span class="required">
+			 *
+		</span>
+		</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="card_number">
+			<span class="help-block">
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-3">CVC
+		<span class="required">
+			 *
+		</span>
+		</label>
+		<div class="col-md-4">
+			<input type="text" placeholder="" class="form-control" name="card_cvc">
+			<span class="help-block">
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-3">Expiration(MM/YYYY)
+		<span class="required">
+			 *
+		</span>
+		</label>
+		<div class="col-md-4">
+			<input type="text" placeholder="MM/YYYY" maxlength="7" class="form-control" name="card_expiry_date">
+			<span class="help-block">
+				 e.g 11/2020
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-md-3">Payment Options
+		<span class="required">
+			 *
+		</span>
+		</label>
+		<div class="col-md-4">
+			<div class="checkbox-list">
+				<label>
+				<div class="checker"><span><input type="checkbox" name="payment[]" value="1" data-title="Auto-Pay with this Credit Card."></span></div> Auto-Pay with this Credit Card </label>
+				<label>
+				<div class="checker"><span><input type="checkbox" name="payment[]" value="2" data-title="Email me monthly billing."></span></div> Email me monthly billing </label>
+			</div>
+			<div id="form_payment_error">
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="form-actions fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-offset-3 col-md-9">
+					<a href="javascript:;" class="btn default button-previous" style="display: inline-block;">
+						<i class="m-icon-swapleft"></i> Back
+					</a>
+					<a id="sendcard" href="javascript:;" class="btn blue button-next">
+						 Submit <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+					<a href="javascript:;" class="btn green button-submit" style="display: none;">
+						 Submit <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
