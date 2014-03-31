@@ -10,3 +10,8 @@ Template.index.rendered = function(){
     Index.initIntro();
     Tasks.initDashboardWidget();
 }
+
+
+function Timer(){
+
+}
