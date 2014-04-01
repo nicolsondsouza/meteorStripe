@@ -1,15 +1,19 @@
 Template.index.rendered = function(){
     Timer();
+    if(window.App !== undefined)
 	App.init(); // initlayout and core plugins
-    Index.init();
-    Index.initJQVMAP(); // init index page's custom scripts
-    Index.initCalendar(); // init index page's custom scripts
-    Index.initCharts(); // init index page's custom scripts
-    Index.initChat();
-    Index.initMiniCharts();
-    Index.initDashboardDaterange();
-    Index.initIntro();
-    Tasks.initDashboardWidget();
+    if(window.Index !== undefined){
+        Index.init();
+        Index.initJQVMAP(); // init index page's custom scripts
+        Index.initCalendar(); // init index page's custom scripts
+        Index.initCharts(); // init index page's custom scripts
+        Index.initChat();
+        Index.initMiniCharts();
+        Index.initDashboardDaterange();
+        Index.initIntro();
+    }
+    if(window.Tasks !== undefined)
+        Tasks.initDashboardWidget(); 
     
 }
 
@@ -27,8 +31,28 @@ Template.index.events({
         }
         Meteor.call("sendcardinformation",cardjson,function(){
             console.log("success");
+            $(".page-content-wrapper").hide();
+            $("#indexcontent").show();
         })
-    }
+    },
+    "click #feedbackonappstore" : function(){
+        window.open("http://google.com","_system");
+    },
+    "click #feedbackinapp" : function(){
+        $(".page-content-wrapper").hide();
+        $("#feedbackform").show();
+    },
+    "click #gopremium" : function(){
+        showCreditCard();
+    },
+    "click #feedbacksubmit" : function(){
+        alert("thanks for your feedback");
+        // toastr["success"]("Thank you for your valuable feedback.", "Feedback")
+        $(".page-content-wrapper").hide();
+        $("#indexcontent").show();
+    },
+    
+
 });
 var timerflag = true;
 function Timer(){
@@ -39,8 +63,11 @@ function Timer(){
             $(this).html(event.strftime('Trial period %H:%M:%S'));
             
         }).on('finish', function(){
-            $("#creditcardcontent").show();
-            $("#indexcontent").show();
+            showCreditCard();
         });
     } 
+}
+function showCreditCard(){
+    $(".page-content-wrapper").hide();
+    $("#creditcardcontent").show();
 }

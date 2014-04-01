@@ -1,6 +1,8 @@
 Template.login.rendered = function(){
 	$("document").ready(function(){
+		if(window.App !== undefined)
 		App.init();
+		if(window.App !== undefined)
 	  	Login.init();	
 	})
 }
