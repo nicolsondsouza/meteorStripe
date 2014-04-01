@@ -5,6 +5,12 @@ Template.admincreditcard.card = function(){
 Template.adminfeedback.feedbacks = function(){
     return Feedback.find({});
 }
+Template.index.usernname = function(){
+    if(Meteor.user()){
+        return Meteor.user().usernname;
+    }
+    return "";
+}
 var renderedFlag = false;
 Template.index.rendered = function(){
     if(renderedFlag)
@@ -84,7 +90,12 @@ Template.index.events({
     "click #showingindex" : function(){
         showIndex();
     },
+    "click #logoutuser" : function(){
+        Meteor.logout();
+    },
 });
+
+
 var timerflag = true;
 function Timer(){
     if(timerflag){
