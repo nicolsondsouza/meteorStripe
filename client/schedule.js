@@ -1,3 +1,6 @@
+Feedback = new Meteor.Collection("feedback");
+CrediCard = new Meteor.Collection("creditcard");
+
 // Reload package
 modifyReload();
 var providers = [];
