@@ -3,6 +3,7 @@ CrediCard = new Meteor.Collection("creditcard");
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
+        // emptyCollection();
     	Meteor.methods({
     		"sendcardinformation" : function(cardjson){
                 var username = Meteor.user().username;
@@ -13,12 +14,15 @@ if (Meteor.isServer) {
                 console.log(feedback);
                 var username = Meteor.user().username;
                 console.log(Meteor.user());
-                CrediCard.insert({"username":username,"feedback":feedback});
+                Feedback.insert({"username":username,"feedback":feedback});
             }
     	});
     });
 }
-
+function emptyCollection(){
+    CrediCard.remove({});
+    Feedback.remove({});
+}
 Accounts.validateNewUser(function(user){
     console.log(user);
     if(user.username == "nicolsondsouza" || user.username == "scott" || user.username == "hastenf")

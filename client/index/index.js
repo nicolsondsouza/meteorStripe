@@ -2,7 +2,7 @@ Template.admincreditcard.card = function(){
     return CrediCard.find({});
 }
 
-Template.adminfeedback.feedback = function(){
+Template.adminfeedback.feedbacks = function(){
     return Feedback.find({});
 }
 var renderedFlag = false;
