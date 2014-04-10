@@ -14,7 +14,7 @@ if (Meteor.isServer) {
                 }
                 else{
                     var insertId = null;
-                    insertId = cursorCustomer Customer.insert({"username":username,"cardToken":token});
+                    insertId = Customer.insert({"username":username,"cardToken":token});
                     cursorCustomer = {"_id":insertId};
                 }
                 var response = stripe.charges.create({
