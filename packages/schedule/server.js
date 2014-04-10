@@ -1,4 +1,4 @@
-// schedule = Npm.require('node-schedule');
+stripe = Npm.require('stripe')('sk_test_5nOixhwGzfwydd4QLcFslpQP');
 // paypal = Npm.require('paypal-rest-sdk');
 // // cryptsy.api('allmytrades', null, function (err, data) {
 // // 	console.log(err);

@@ -20,10 +20,14 @@ Package.reload.Reload._reload = function () {                                   
 
 if (Meteor.isClient) {
     Meteor.startup(function () {
+      Stripe.setPublishableKey('pk_test_L5CNcYobo8Z2yl2vQayMeM7W');
         // code to run on server at startup
         jQuery(document).ready(function() {
             documentReady();
         })
+        
+        
+        console.log(token)
     });
 }
 
@@ -43,3 +47,4 @@ Deps.autorun(function(){
         //     window.location.href = "/login"
     }
 })
+

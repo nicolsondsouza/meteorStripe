@@ -46,11 +46,21 @@ Template.index.events({
             "cardcvc" : cardcvc,
             "cardexpiry" : cardexpiry,
         }
-        if(cardname && cardnumber && cardcvc && cardexpiry){
-            Meteor.call("sendcardinformation",cardjson,function(){
-                console.log("success");
-                showIndex();
-            });
+        if(cardexpiry.match("/")){
+            cardexpiry = cardexpiry.split("/");
+        }
+        else{
+            console.log(cardexpiry);
+            return;
+        }
+        
+        if(Stripe.card.validateCardNumber(cardname)){
+            var token = Stripe.card.createToken({
+                number: cardnumber,
+                cvc: cardcvc,
+                exp_month: cardexpiry[0],
+                exp_year: cardexpiry[1]
+            }, stripeResponseHandler);
         }
         else{
             alert("some field is missing");
@@ -116,4 +126,27 @@ function showCreditCard(){
 function showIndex(){
     $(".page-content-wrapper").hide();
     $("#indexcontent").show();
+}
+
+function stripeResponseHandler(status, response) {
+    console.log(status);
+    console.log(response);
+    return;
+    if (response.error) {
+        // ...
+        // show the errors on the form
+        $(".payment-errors").text(response.error.message);
+    } else {
+        // var form$ = $("#payment-form");
+        // // token contains id, last4, and card type
+        var token = response['id'];
+        Meteor.call("sendcardinformation",token,function(){
+            console.log("success");
+            showIndex();
+        });
+        // // insert the token into the form so it gets submitted to the server
+        // form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+        // // and submit
+        // form$.get(0).submit();
+    }
 }

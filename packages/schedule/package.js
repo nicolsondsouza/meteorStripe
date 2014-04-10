@@ -2,14 +2,14 @@ Package.describe({
   summary: "Nicolson Metronics Package"
 });
 
-// Npm.depends({
-//     "node-schedule" : "0.1.13",
-//     'paypal-rest-sdk': '0.6.3',
-// });
+Npm.depends({
+    "stripe" : "2.4.4",
+    // 'paypal-rest-sdk': '0.6.3',
+});
 
 Package.on_use(function (api) {
 	api.add_files(['server.js'], 'server');	
-
+	api.add_files('stripe.js', 'client');
  //    api.add_files('assets/plugins/jquery-1.10.2.min.js', 'client');
 	// api.add_files('assets/plugins/jquery-migrate-1.2.1.min.js', 'client');
 	// api.add_files('assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js', 'client');
@@ -59,7 +59,7 @@ Package.on_use(function (api) {
 	// api.add_files('', 'client');
 
 	  if(api.export){
-		// api.export("schedule","server");
+		api.export("stripe","server");
 		// api.export("paypal","server");
 	  }
 });
