@@ -1,14 +1,14 @@
 Template.login.rendered = function(){
 	$("document").ready(function(){
 		if(window.App !== undefined)
-		App.init();
+			App.init();
 		if(window.App !== undefined)
-	  	Login.init();	
+	  		Login.init();	
 	})
 }
 Template.login.events({
 	"click #register-submit-btn" : function(){
-		var username = $("input[name='susername'").val();
+		var username = $("input[name='susername']").val();
 		var password = $("input[name='spassword'").val();
 		var rpassword = $("input[name='rpassword'").val();
 		console.log(username);
